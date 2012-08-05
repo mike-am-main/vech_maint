@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120727152525) do
+ActiveRecord::Schema.define(:version => 20120804154346) do
+
+  create_table "authorized_vehicles", :force => true do |t|
+    t.integer  "user_id",                                        :null => false
+    t.integer  "vehicle_id",                                     :null => false
+    t.string   "user_level", :limit => 50, :default => "Driver"
+    t.string   "pwd"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "authorized_vehicles", ["user_id", "created_at"], :name => "index_authorized_vehicles_on_user_id_and_created_at"
+
+  create_table "maint_events", :force => true do |t|
+    t.integer  "vehicle_id",                :null => false
+    t.string   "event",      :limit => 150, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "maint_events", ["vehicle_id", "created_at"], :name => "index_maint_events_on_vehicle_id_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -25,5 +45,14 @@ ActiveRecord::Schema.define(:version => 20120727152525) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "vehicles", :force => true do |t|
+    t.string   "license_plate", :limit => 10, :null => false
+    t.string   "make"
+    t.string   "model"
+    t.string   "year"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
 
 end
