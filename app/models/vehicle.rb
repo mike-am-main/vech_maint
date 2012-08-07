@@ -1,6 +1,7 @@
 class Vehicle < ActiveRecord::Base
   attr_accessible :license_plate, :make, :model, :year
   has_many :maint_events
-  has_many :authorized_users
-  has_many :users, :through => :authorized_users
+  has_many :uservehicles
+  has_many :users, :through => :uservehicles
+  default_scope order: 'vehicles.created_at DESC'
 end

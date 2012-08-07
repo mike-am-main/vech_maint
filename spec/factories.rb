@@ -1,3 +1,6 @@
+# revised factories
+# created the associations from the join table only
+
 FactoryGirl.define do
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
@@ -9,5 +12,16 @@ FactoryGirl.define do
       admin true
     end
   end
-end
 
+  Factory.define(:vehicle) do |vehicle|
+    vehicle.license_plate "TEST"
+    vehicle.model "Ford"
+    vehicle.make "F250"
+  end
+
+  # join table factory - :uservehicle
+  Factory.define(:uservehicle) do |uservehicle|
+    uservehicle.association :user
+    uservehicle.association :vehicle
+  end 
+end

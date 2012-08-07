@@ -27,6 +27,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:vehicles) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -120,5 +121,22 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "vehicle associations" do
+
+    before { @user.save }
+    let!(:older_vehicle) do 
+      FactoryGirl.build(:vehicle, created_at: 1.day.ago)
+      FactoryGirl.create(:uservehicle, user_id: @user.id, user_level: "OLDER", created_at: 1.day.ago)
+    end
+    let!(:newer_vehicle) do
+      FactoryGirl.build(:vehicle, created_at: 1.hour.ago)
+      FactoryGirl.create(:uservehicle, user_id: @user.id, user_level: "NEWER", created_at: 1.hour.ago)
+    end
+
+    it "should have the right vehicles in the right order" do
+      @user.uservehicles.should == [older_vehicle, newer_vehicle]
+    end
   end
 end

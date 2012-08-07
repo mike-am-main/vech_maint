@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120804154346) do
-
-  create_table "authorized_vehicles", :force => true do |t|
-    t.integer  "user_id",                                        :null => false
-    t.integer  "vehicle_id",                                     :null => false
-    t.string   "user_level", :limit => 50, :default => "Driver"
-    t.string   "pwd"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-  end
-
-  add_index "authorized_vehicles", ["user_id", "created_at"], :name => "index_authorized_vehicles_on_user_id_and_created_at"
+ActiveRecord::Schema.define(:version => 20120807173301) do
 
   create_table "maint_events", :force => true do |t|
     t.integer  "vehicle_id",                :null => false
@@ -45,6 +34,17 @@ ActiveRecord::Schema.define(:version => 20120804154346) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "uservehicles", :force => true do |t|
+    t.integer  "user_id",                                        :null => false
+    t.integer  "vehicle_id",                                     :null => false
+    t.string   "user_level", :limit => 50, :default => "Driver"
+    t.string   "pwd"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "uservehicles", ["user_id", "created_at"], :name => "index_authorized_vehicles_on_user_id_and_created_at"
 
   create_table "vehicles", :force => true do |t|
     t.string   "license_plate", :limit => 10, :null => false
