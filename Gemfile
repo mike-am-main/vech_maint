@@ -7,7 +7,7 @@ gem 'faker', '1.0.1'
 gem 'rake', '0.9.2.2'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails', '2.0.1'
 gem 'execjs'
 gem 'therubyracer'
 
