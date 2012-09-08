@@ -2,6 +2,7 @@ VechMaint::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :vehicles
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
