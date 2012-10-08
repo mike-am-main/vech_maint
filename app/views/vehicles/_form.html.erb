@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :year %><br />
+    <%= f.text_field :year %>
+  </div>
+  <div class="field">
     <%= f.label :make %><br />
     <%= f.text_field :make %>
   </div>
@@ -20,9 +24,10 @@
     <%= f.text_field :model %>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
-    <%= f.text_field :year %>
+    <%= f.label :license_plate %><br />
+    <%= f.text_field :license_plate %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

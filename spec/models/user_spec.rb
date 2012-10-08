@@ -135,7 +135,7 @@ describe User do
       FactoryGirl.create(:uservehicle, user_id: @user.id, user_level: "NEWER", created_at: 1.hour.ago)
     end
 
-    it "should have the right vehicles in the right order" do
+    it "should have the vehicles in the correct sort order" do
       @user.uservehicles.should == [older_vehicle, newer_vehicle]
     end
   end

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @authorized_vehicles = @user.vehicles.find(:all)
   end
 
   def new

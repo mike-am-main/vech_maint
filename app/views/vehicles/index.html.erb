@@ -2,21 +2,35 @@
 
 <table>
   <tr>
-    <th>Make</th>
-    <th>Model</th>
     <th>Year</th>
+    <th>&nbsp</th>
+    <th>Make</th>
+    <th>&nbsp</th>
+    <th>Model</th>
+    <th>&nbsp</th>
+    <th>License Plate</th>
+    <th>&nbsp</th>
     <th></th>
+    <th>&nbsp</th>
     <th></th>
+    <th>&nbsp</th>
     <th></th>
   </tr>
 
 <% @vehicles.each do |vehicle| %>
   <tr>
-    <td><%= vehicle.make %></td>
-    <td><%= vehicle.model %></td>
     <td><%= vehicle.year %></td>
+    <th>&nbsp</th>
+    <td><%= vehicle.make %></td>
+    <th>&nbsp</th>
+    <td><%= vehicle.model %></td>
+    <th>&nbsp</th>
+    <td><%= vehicle.license_plate %></td>
+    <th>&nbsp</th>
     <td><%= link_to 'Show', vehicle %></td>
+    <th>&nbsp</th>
     <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+    <th>&nbsp</th>
     <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
